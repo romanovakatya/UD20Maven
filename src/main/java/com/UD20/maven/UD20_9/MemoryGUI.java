@@ -1,6 +1,5 @@
 package com.UD20.maven.UD20_9;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -9,15 +8,13 @@ import javax.swing.JLabel;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.GridLayout;
-import javax.swing.JToggleButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+
 
 public class MemoryGUI extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-
+	private GameButtons botonesJuego;
 	
 	/**
 	 * Create the frame.
@@ -36,14 +33,15 @@ public class MemoryGUI extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{0.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		JLabel lblMensaje = new JLabel("Mensaje");
+		JLabel lblMensaje = new JLabel("Intentos: ");
+		
 		GridBagConstraints gbc_lblMensaje = new GridBagConstraints();
 		gbc_lblMensaje.insets = new Insets(0, 0, 5, 0);
 		gbc_lblMensaje.weightx = 1.0;
 		gbc_lblMensaje.gridx = 0;
 		gbc_lblMensaje.gridy = 0;
 		contentPane.add(lblMensaje, gbc_lblMensaje);
-		
+				
 		JPanel panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.fill = GridBagConstraints.BOTH;
@@ -52,20 +50,10 @@ public class MemoryGUI extends JFrame {
 		contentPane.add(panel, gbc_panel);
 		panel.setLayout(new GridLayout(4, 4, 0, 0));
 		
+		//añadimos botones al juego,
+		botonesJuego = new GameButtons(panel, lblMensaje);		
 		
-		JuegoButtons botonesJuego = new JuegoButtons(panel);
-		
-		JToggleButton tglbtnNewToggleButton = new JToggleButton("New toggle button");
-		tglbtnNewToggleButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
-		panel.add(tglbtnNewToggleButton);
-					
-		botonesJuego.showColorOfButton();
-		
-		
+		//ejecutamos el juego,
+		botonesJuego.showColorOfButton();		
 	}
-
 }
